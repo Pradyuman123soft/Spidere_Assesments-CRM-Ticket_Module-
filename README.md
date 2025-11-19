@@ -28,11 +28,14 @@ The system allows users to register, login, create tickets, assign tickets, upda
 
 ### 🛡 Role-based Permissions
 - **Author (Ticket Creator)**  
-  - Can update all ticket details   
+  - Can update all ticket details
+  - Can create tickets for user's
+  - cannot see other author assigned tickets
 
 - **Assignee (Assigned User)**  
   - Can update ticket status only  
   - Cannot update name, description, file, or assignment
+  - cannot see other Assignee tickets
 
 ---
 
