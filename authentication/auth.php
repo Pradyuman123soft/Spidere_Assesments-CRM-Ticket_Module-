@@ -71,6 +71,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $_SESSION['user_loggedIn'] = true;
                 $_SESSION['user_name'] = $username;
                 $_SESSION['user_email'] = $email;
+                $_SESSION['is_admin'] = 0;
 
                 echo "<script>alert('user registered successfully');
                 window.location.href = '../user_view/user_dashboard.php';

@@ -48,7 +48,7 @@ if ($ticket->num_rows == 1) {
 
     <h2>Create a New Ticket</h2>
 
-    <form action="ticket_update.logic.php?ticket_id=<?= $ticket_id ?>" method="POST">
+    <form action="User_ticket_update.logic.php?ticket_id=<?= $ticket_id ?>" method="POST">
 
         <label for="ticket_name">Ticket Name</label>
         <input type="text" name="ticket_name" id="ticket_name" value = <?= $ticket_name?> disabled>

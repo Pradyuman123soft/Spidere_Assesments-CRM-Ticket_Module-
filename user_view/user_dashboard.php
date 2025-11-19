@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['is_admin'] == 1) {
+if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
     die("Access Denied: You are admin.");
     header ("Location :../admin/Admin_dashboard.php");
 }

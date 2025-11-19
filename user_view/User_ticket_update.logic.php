@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $update->bind_param('si', $ticket_status, $ticket_id);
     if($update->execute()){
         echo "<script>alert('Ticket Updation successfull');
-        window.location.href = '../user_view/user_update.ticket.php';
+        window.location.href = '../user_view/user_dashboard.php';
         </script>";
     }
     $update->close();
