@@ -52,3 +52,58 @@ table tr:last-child td {
     border-bottom: none;
 }
 
+
+/* Tablets */
+@media (max-width: 768px) {
+    .ticket_container {
+        padding: 18px;
+    }
+
+    .ticket_container h2 {
+        font-size: 22px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    .ticket_container {
+        padding: 15px;
+    }
+
+    /* Enable horizontal scroll for large tables */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    table th, table td {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .ticket_container h2 {
+        font-size: 20px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+    .ticket_container {
+        padding: 12px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .ticket_container h2 {
+        font-size: 18px;
+    }
+}

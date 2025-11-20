@@ -36,7 +36,6 @@ body {
     color: #444;
 }
 
-/* Inputs, select, textarea */
 .ticket-container input[type="text"],
 .ticket-container input[type="file"],
 .ticket-container input[type="email"],
@@ -52,7 +51,6 @@ body {
     transition: 0.2s ease;
 }
 
-/* Hover / focus effects */
 .ticket-container input:focus,
 .ticket-container textarea:focus,
 .ticket-container select:focus {
@@ -61,13 +59,11 @@ body {
     background: #fff;
 }
 
-/* Textarea resize control */
 .ticket-container textarea {
     height: 110px;
     resize: none;
 }
 
-/* Button styling */
 .ticket-container button {
     padding: 12px;
     background: #4b7bec;
@@ -84,3 +80,53 @@ body {
     background: #3867d6;
 }
 
+@media (max-width: 768px) {
+    .ticket-container {
+        width: 80%;
+        padding: 25px;
+        margin: 40px auto;
+    }
+
+    .ticket-container h2 {
+        font-size: 22px;
+    }
+
+    .ticket-container label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ticket-container {
+        width: 95%;
+        padding: 20px;
+        margin: 30px auto;
+        border-radius: 10px;
+    }
+
+    .ticket-container h2 {
+        font-size: 20px;
+    }
+
+    .ticket-container input,
+    .ticket-container select,
+    .ticket-container textarea {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .ticket-container button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .ticket-container {
+        padding: 15px;
+    }
+
+    .ticket-container h2 {
+        font-size: 18px;
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-// include('../ticket_manage/ticket.logic.php')
+
 session_start();
 if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])){
     die ("Access Denied:That's Not Your Page, You are Admin");

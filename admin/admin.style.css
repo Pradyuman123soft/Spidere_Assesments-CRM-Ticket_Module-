@@ -13,13 +13,13 @@ body {
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
     width: 220px;
     height: 100vh;
     background: #000000;
     color: white;
     padding: 20px;
+    transition: all 0.3s ease-in-out;
 }
 
 .sidebar .logo {
@@ -44,13 +44,11 @@ body {
     background: #4a4141;
 }
 
-/* Main Content */
 .main-content {
     flex: 1;
     padding: 20px;
 }
 
-/* Top Bar */
 .topbar {
     background: white;
     padding: 15px 20px;
@@ -61,8 +59,6 @@ body {
 .topbar h2 {
     margin-bottom: 5px;
 }
-
-/* Table Section */
 .table-section {
     background: white;
     padding: 20px;
@@ -84,7 +80,8 @@ table thead {
     color: white;
 }
 
-table th, table td {
+table th, 
+table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -93,6 +90,72 @@ table th, table td {
 table tr:hover {
     background: #f1f5f9;
 }
-#tableHead:hover{
+
+#tableHead:hover {
     background: #000000;
+}
+
+
+/* Medium Screens (tablets) */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .topbar {
+        margin-top: 15px;
+    }
+}
+
+/* Small Screens (phones) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .topbar h2 {
+        font-size: 18px;
+    }
+
+    .table-section h3 {
+        font-size: 18px;
+    }
+}
+
+/* Extra Small Screens  */
+@media (max-width: 600px) {
+
+    /* Make sidebar collapsible style */
+    .sidebar {
+        padding: 10px;
+    }
+
+    .sidebar .logo {
+        font-size: 18px;
+    }
+
+    .sidebar ul li {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; 
+    }
 }

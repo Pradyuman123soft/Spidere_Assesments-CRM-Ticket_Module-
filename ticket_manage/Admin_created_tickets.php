@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])) {
+if ($_SESSION['is_admin'] != 1 || !isset($_SESSION['is_admin'])) {
     die("Access Denied: You are not admin.");
 }
 include("../db_con/connection.php");

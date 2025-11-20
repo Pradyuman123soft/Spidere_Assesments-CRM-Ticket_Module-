@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])){
+if ($_SESSION['is_admin'] != 1 || !isset($_SESSION['is_admin'])){
     die ("Access denied: You are not Admin");
 }
 if(!isset($_SESSION['user_email'])){
@@ -39,10 +39,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     // Move file to uploads folder
     if (move_uploaded_file($file_tmp, $upload_path)) {
         $ticket_file = $file_new_name;
-    } else {
-        die("File Upload Failed!" . $_FILES['ticket_file']['error']);
     }
-
+    if (!empty($ticket_file)) {
     $update = $conn->prepare("
     UPDATE tickets t
     JOIN ticket_assignments a ON a.ticket_id = t.ticket_id
@@ -61,5 +59,26 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         </script>";
     }
     $update->close();
+    }else{
+    $update = $conn->prepare("
+    UPDATE tickets t
+    JOIN ticket_assignments a ON a.ticket_id = t.ticket_id
+    SET 
+    t.name = ?,
+    t.description=?,
+    a.status=?,
+    a.updated_at = NOW()
+    WHERE t.ticket_id = ?;
+    ");
+    $update->bind_param('sssi', $ticket_name, $ticket_desc, $ticket_status, $ticket_id);
+    if($update->execute()){
+        echo "<script>alert('Ticket Updation successfull');
+        window.location.href = '../ticket_manage/Admin_created_tickets.php';
+        </script>";
+    }
+    $update->close();
+    }
+
+
 }
 ?>
