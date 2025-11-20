@@ -51,6 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if($action == "register"){
         $username = $_POST['Name'];
         $email = $_POST['email'];
+        $is_admin = $_POST['is_admin'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         // check if user exists
@@ -63,19 +64,28 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             echo "<script>alert('user already exists!! please use another email')</script>";
         }
         else {
-            $reg = $conn->prepare("INSERT INTO user (username, email, password) VALUES (?,?,?)");
-            $reg->bind_param("sss",$username,$email,$password);
+            $reg = $conn->prepare("INSERT INTO user (username, email, password, is_admin) VALUES (?,?,?,?)");
+            $reg->bind_param("sssi", $username, $email, $password, $is_admin);
             if($reg->execute()){
                 session_start();
 
                 $_SESSION['user_loggedIn'] = true;
                 $_SESSION['user_name'] = $username;
                 $_SESSION['user_email'] = $email;
-                $_SESSION['is_admin'] = 0;
+                $_SESSION['is_admin'] = $is_admin;
 
                 echo "<script>alert('user registered successfully');
+                </script>";
+                if($is_admin == 1){
+                echo "<script>
+                window.location.href = '../admin/Admin_dashboard.php';
+                </script>";
+                }
+                else{
+                    echo "<script>
                 window.location.href = '../user_view/user_dashboard.php';
                 </script>";
+                }
             }
             else{
                 echo "<script>alert('Error user registering');

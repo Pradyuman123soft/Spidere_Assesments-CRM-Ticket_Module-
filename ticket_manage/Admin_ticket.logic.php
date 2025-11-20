@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['is_admin'] != 1) {
+if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])) {
     die("Access Denied: You are not admin.");
 }
 $created_by = $_SESSION['user_email'];

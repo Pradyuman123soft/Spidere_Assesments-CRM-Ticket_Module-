@@ -63,6 +63,15 @@
     outline: none;
     transition: 0.3s ease;
 }
+.formRegister select
+    {
+    outline: none;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
 
 .formRegister input:focus{
     border-color: #5a67d8;

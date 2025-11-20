@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])) {
     die("Access Denied: You are admin.");
     header ("Location :../admin/Admin_dashboard.php");
 }
@@ -27,7 +27,7 @@ where a.assigned_to = '$user_email'
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>User Dashboard</title>
     <link rel="stylesheet" href="../admin/admin.style.css">
 </head>
 <body>

@@ -36,6 +36,11 @@ include("../db_con/connection.php");
             <input type="email" name="email" id="regemail" placeholder="example@gmail.com" required>
             <label for="password">Enter you password</label>
             <input type="password" name="password" id="regpassword" placeholder ="enter you placeholder" required>
+            <label for="is_admin">Select User Type</label>
+            <select name="is_admin" id="is_admin">
+                <option value="0" selected>User</option>
+                <option value="1">Admin</option>
+            </select>
             <button type="submit">Register</button>
             <p>have an account?<a href="#" class="color loginToggle">Login Here</a></p>
         </form>

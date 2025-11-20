@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['is_admin']!=1){
+if ($_SESSION['is_admin'] == 1 || !isset($_SESSION['is_admin'])){
     die ("Access denied: You are not Admin");
 }
 if(!isset($_SESSION['user_email'])){
