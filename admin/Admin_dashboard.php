@@ -56,10 +56,22 @@ $result = $conn->query("SELECT username, email FROM user WHERE is_admin = 0");
                         <tr>
                             <td><?= $row['username'] ?></td>
                             <td><?= $row['email'] ?></td>
-                            <td>
-                                <a href="../ticket_manage/Admin_created_tickets.php?user_email=<?= $row['email'] ?>">View Tickets</a>
-
-                            </td>
+                            <?php 
+                            $created_by = $_SESSION['user_email'];
+                            $assign_to = $row['email'];
+                            $ticket = $conn->query("
+                            SELECT t.ticket_id, a.ticket_id 
+                            FROM tickets t 
+                            JOIN ticket_assignments a ON t.ticket_id = a.ticket_id 
+                            WHERE t.created_by= '$created_by' AND a.assigned_to = '$assign_to'
+                            "); ?>
+                            <?php  if($ticket->num_rows === 0) { ?>
+                                <td>No Ticket</td>
+                            <?php } else { ?>
+                                <td>
+                                    <a href="../ticket_manage/Admin_created_tickets.php?user_email=<?= $row['email'] ?>">View Tickets</a>
+                                </td>
+                            <?php } ?>
                         </tr>
                     <?php } ?>
                 </tbody>
