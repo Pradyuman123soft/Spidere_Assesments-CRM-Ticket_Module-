@@ -51,7 +51,7 @@ if ($ticket->num_rows == 1) {
     <form action="Admin_ticket.update.logic.php?ticket_id=<?= $ticket_id ?>" method="POST" enctype="multipart/form-data">
 
         <label for="ticket_name">Ticket Name</label>
-        <input type="text" name="ticket_name" id="ticket_name" value = <?= $ticket_name?>>
+        <input type="text" name="ticket_name" id="ticket_name" value = "<?php echo $ticket_name; ?>">
 
         <label for="asignee_email">Author (Email)</label>
         <input type="email" name="asignee_email" id="asignee_email"  value = <?= $ticket_created?> disabled>

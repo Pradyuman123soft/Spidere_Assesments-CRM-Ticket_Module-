@@ -1,5 +1,18 @@
 <?php
+session_start();
+if(isset($_SESSION['is_admin'])){
+    if($_SESSION['is_admin'] == 1){
+        echo "<script>
+        window.location.href = '../admin/Admin_dashboard.php';
+        </script>";
+    }else{
+        echo "<script>
+        window.location.href = '../user_view/user_dashboard.php';
+        </script>";
+    }
+}
 include("../db_con/connection.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +26,7 @@ include("../db_con/connection.php");
     <div class = "main">
     <header class="heading">
         <h2>CRM -Ticket Module</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores a ipsam.</p>
+        <p>A Ticket Modular that Help a Organisation to Assign Works to their users Using Ticket</p>
     </header>
     <main class="SignupForm">
         <section>
@@ -36,11 +49,6 @@ include("../db_con/connection.php");
             <input type="email" name="email" id="regemail" placeholder="example@gmail.com" required>
             <label for="password">Enter you password</label>
             <input type="password" name="password" id="regpassword" placeholder ="enter you placeholder" required>
-            <label for="is_admin">Select User Type</label>
-            <select name="is_admin" id="is_admin">
-                <option value="0" selected>User</option>
-                <option value="1">Admin</option>
-            </select>
             <button type="submit">Register</button>
             <p>have an account?<a href="#" class="color loginToggle">Login Here</a></p>
         </form>

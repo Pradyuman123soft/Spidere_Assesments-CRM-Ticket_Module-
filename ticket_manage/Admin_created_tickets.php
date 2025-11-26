@@ -40,6 +40,7 @@ else {
     <div class="ticket_container">
 
     <h2>Assigned Tickets To <?= htmlspecialchars($user_email);?></h2>
+    <div class="table-wrapper">
     <table>
         <tr>
             <th>ticket_id</th>
@@ -57,24 +58,29 @@ else {
         <?php while ($row = $result->fetch_assoc()){ ?>
             <tr>
             <td><?=$row['ticket_id']; ?></td>
-            <td><?=htmlspecialchars($row['name']); ?></td>
-            <td><?=htmlspecialchars($row['description']); ?></td>
+            <td>
+                <?= substr($row['name'], 0, 10); ?>...
+            </td>
+
+            <td>
+                <?= substr($row['description'], 0, 10); ?>...
+            </td>
             <td>
             <?php if ($row['file']) { ?>
-                <a href="../uploads/<?= $row['file']; ?>" download>Download</a>
+                <a class="badge-link" href="../uploads/<?= $row['file']; ?>" download>Download</a>
             <?php } else { echo "No File"; } ?>
             </td>
 
             <td><?=htmlspecialchars($row['status']); ?></td>
             <td>
-                <a href="../admin/Admin_ticket.update.php?ticket_id=<?= $row['ticket_id'] ?>">Update Ticket</a>
+                <a class="badge-link" href="../admin/Admin_ticket.update.php?ticket_id=<?= $row['ticket_id'] ?>">Update</a>
             </td>
             <td><?=htmlspecialchars($row['created_at']); ?></td>
             <td><?=htmlspecialchars($row['updated_at']); ?></td>
         </tr>
         <?php } ?>
     </table>
-    
+    </div>
 </div>
 </body>
 </html>

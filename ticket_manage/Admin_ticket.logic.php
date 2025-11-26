@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     if (move_uploaded_file($file_tmp, $upload_path)) {
         $ticket_file = $file_new_name;
     } else {
-        die("File Upload Failed!" . $_FILES['ticket_file']['error']);
+        $ticket_file = null;
     }
     // check the asignee is available or not
     $check = $conn->prepare("SELECT email FROM user where email = ?");

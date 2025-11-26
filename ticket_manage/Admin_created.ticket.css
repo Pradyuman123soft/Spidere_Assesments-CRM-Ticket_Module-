@@ -51,6 +51,19 @@ table tr:hover {
 table tr:last-child td {
     border-bottom: none;
 }
+.badge-link {
+    padding: 4px 10px;
+    background: #28a745;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.badge-link:hover {
+    background: #1f7e34;
+}
 
 
 /* Tablets */

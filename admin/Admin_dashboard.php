@@ -26,7 +26,6 @@ $result = $conn->query("SELECT username, email FROM user WHERE is_admin = 0");
         <h2 class="logo">Admin Panel</h2>
         <ul>
             <li class="active">Dashboard</li>
-            <li id="Create_ticket">Create Ticket</li>
             <li id="logout">Logout</li>
         </ul>
     </aside>
@@ -48,6 +47,7 @@ $result = $conn->query("SELECT username, email FROM user WHERE is_admin = 0");
                         <th>Name</th>
                         <th>Email</th>
                         <th>All Tickets</th>
+                        <th>Add Tickets</th>
                     </tr>
                 </thead>
 
@@ -69,9 +69,12 @@ $result = $conn->query("SELECT username, email FROM user WHERE is_admin = 0");
                                 <td>No Ticket</td>
                             <?php } else { ?>
                                 <td>
-                                    <a href="../ticket_manage/Admin_created_tickets.php?user_email=<?= $row['email'] ?>">View Tickets</a>
+                                    <a class="badge-link" href="../ticket_manage/Admin_created_tickets.php?user_email=<?= $row['email'] ?>">View Tickets</a>
                                 </td>
                             <?php } ?>
+                            <td>
+                                <a class="badge-link" href="../ticket_manage/Admin_ticket.create.php?user_email=<?= $row['email'] ?>">Create Tickets</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -85,9 +88,6 @@ $result = $conn->query("SELECT username, email FROM user WHERE is_admin = 0");
     document.querySelector("#logout").addEventListener("click",()=>{
     window.location.href = "../authentication/logout.php";
 })
-    document.querySelector("#Create_ticket").addEventListener("click",()=>{
-        window.location.href = '../ticket_manage/Admin_ticket.create.php';
-    })
 </script>
 </body>
 </html>

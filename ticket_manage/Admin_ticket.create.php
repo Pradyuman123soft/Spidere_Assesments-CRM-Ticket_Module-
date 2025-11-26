@@ -1,5 +1,12 @@
 <?php
 include('../ticket_manage/Admin_ticket.logic.php');
+if(!isset($_GET['user_email'])){
+    echo "<script>
+    alert('ticket expired');
+    window.location.href = '../admin/Admin_dashboard.php';
+    </script>";
+}
+$agent_email = $_GET['user_email'];
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +30,14 @@ include('../ticket_manage/Admin_ticket.logic.php');
         <input type="text" name="ticket_name" id="ticket_name" placeholder="Ticket title..." required>
 
         <label for="asignee_email">Assign To (Email)</label>
-        <input type="email" name="asignee_email" id="asignee_email" placeholder="user@example.com" required>
+        <input type="email" name="asignee_email" id="asignee_email" value = <?= $agent_email; ?> disabled required>
 
         <label for="ticket_desc">Description</label>
         <textarea name="ticket_desc" id="ticket_desc" placeholder="Describe the issue..." required></textarea>
 
         <label for="ticket_status">Status</label>
-        <select name="ticket_status" id="ticket_status">
-            <option value="pending" selected disabled>Pending</option>
-            <option value="inprogress">In Progress</option>
-            <option value="onhold">On Hold</option>
+        <select name="ticket_status" id="ticket_status" disabled>
+            <option value="pending" selected>Pending</option>
         </select>
 
         <label for="ticket_file">Attach File</label>

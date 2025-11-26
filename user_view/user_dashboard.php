@@ -73,18 +73,18 @@ where a.assigned_to = '$user_email'
                     <?php } ?>
                     <?php while($row = $result->fetch_assoc()) { ?>
                         <tr>
-                            <td><?= $row['name']; ?></td>
+                            <td><?= substr($row['name'], 0, 10); ?>...</td>
                             <td><?= $row['created_by']; ?></td>
-                            <td><?= $row['description']; ?></td>
+                            <td><?= substr($row['description'], 0, 10); ?>...</td>
                             <td>
                                 <?php if ($row['file']) { ?>
-                                    <a href="../uploads/<?= $row['file']; ?>" download>Download</a>
+                                    <a class="badge-link" href="../uploads/<?= $row['file']; ?>" download>Download</a>
                                 <?php } else { echo "No File"; } ?>
                             </td>
                             <td><?= $row['status']; ?></td>
                             <td><?= $row['created_at']; ?></td>
                             <td>
-                                <a href="../user_view/user_update.ticket.php?ticket_id=<?= $row['ticket_id']; ?>">update Tickets</a>
+                                <a class="badge-link" href="../user_view/user_update.ticket.php?ticket_id=<?= $row['ticket_id']; ?>">update</a>
 
                             </td>
                         </tr>
